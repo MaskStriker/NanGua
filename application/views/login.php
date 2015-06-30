@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Login</title>
+	<!-- 新 Bootstrap 核心 CSS 文件 -->
+	<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+	<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+	<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<style>
+		#container{
+			width: 50%;
+			margin: 0 auto;
+			margin-top: 10%;
+			border-radius: 4px;
+		}
+	</style>
+</head>
+<body>
+
+<div id="container">
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+	    <h3 class="panel-title">Login</h3>
+	  </div>
+	  <div class="panel-body">
+		<form class="form-horizontal" method="post" action="login/loginHandler">
+		  <div class="form-group">
+		    <label for="inputEmail3" class="col-sm-2 control-label">用户名</label>
+		    <div class="col-sm-9">
+		      <input type="" class="form-control" id="inputEmail3" name="username" placeholder="用户名">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
+		    <div class="col-sm-9">
+		      <input type="password" class="form-control" id="inputPassword3" name="password" placeholder="密码">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <div class="col-sm-offset-2 col-sm-10">
+		      <div class="checkbox">
+		        <label>
+		          <input type="checkbox"> 记住账号
+		        </label>
+		        <label style="cursor:default;color:red"><?php if(isset($existedUser))echo "账户或密码错误，请重新输入！"?></label>
+		      </div>
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <div class="col-sm-offset-2 col-sm-12">
+		      <button type="submit" class="btn btn-default"><strong>登&nbsp&nbsp录</strong></button>
+		    </div>
+		  </div>
+		</form>
+	  </div>
+	</div>
+
+</div>
+
+</body>
+</html>
