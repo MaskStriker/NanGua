@@ -32,13 +32,13 @@
 		  <div class="form-group">
 		    <label for="inputEmail3" class="col-sm-2 control-label">用户名</label>
 		    <div class="col-sm-9">
-		      <input type="" class="form-control" id="inputEmail3" name="username" placeholder="用户名">
+		      <input type="" class="form-control" id="username" name="username" placeholder="用户名">
 		    </div>
 		  </div>
 		  <div class="form-group">
 		    <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
 		    <div class="col-sm-9">
-		      <input type="password" class="form-control" id="inputPassword3" name="password" placeholder="密码">
+		      <input type="password" class="form-control" id="password" name="password" placeholder="密码">
 		    </div>
 		  </div>
 		  <div class="form-group">
@@ -47,13 +47,13 @@
 		        <label>
 		          <input type="checkbox"> 记住账号
 		        </label>
-		        <label style="cursor:default;color:red"><?php if(isset($existedUser))echo "账户或密码错误，请重新输入！"?></label>
+		        <label id="errorTips" style="display:none;cursor:default;color:red">账户或密码错误，请重新输入!</label>
 		      </div>
 		    </div>
 		  </div>
 		  <div class="form-group">
 		    <div class="col-sm-offset-2 col-sm-12">
-		      <button type="submit" class="btn btn-default"><strong>登&nbsp&nbsp录</strong></button>
+		      <button type="submit" id="submit" class="btn btn-default"><strong>登&nbsp&nbsp录</strong></button>
 		    </div>
 		  </div>
 		</form>
@@ -61,6 +61,39 @@
 	</div>
 
 </div>
+<script>
+	var login = {
+		init:function() {
+			this.eventBind();
+		},
+		submit:function(data) {
+			$.ajax({
+				url:"login/loginHandler",
+				type:"post",
+				data:data,
+				success:function(result) {
+					if (result==="false") {
+						$("#errorTips").show();
+					}else if (result==="true") {
+						location.href = "login/success";
+					};
+				}
+			})
+		},
+		eventBind:function() {
+			$("#submit").on("click",function(e) {
+				e.preventDefault();
+				var data={};
+				data.username = $("#username").val();
+				data.password = $("#password").val();
+				login.submit(data);
+			})
+		}
+	}
+	$(function() {
+		login.init();
+	})
 
+</script>
 </body>
 </html>

@@ -5,6 +5,7 @@ class Login extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		$this->load->library("session");
 	}
 	public function index()
 	{
@@ -17,13 +18,21 @@ class Login extends CI_Controller {
 			$existedUser = $this->login_Model->checkUser();
 			$data["existedUser"] = $existedUser;
 			if ($existedUser==true) {
-				$this->load->view('welcome_message.php');
+				$userdata = array('username' => $username );
+				$this->session->set_userdata($userdata);
+				echo "true";
 			}else{
-				
+				echo "false";
 			}
 		}
-
-		
+	}
+	public function success()
+	{
+		if ($this->session->userdata('username')) {
+			$this->load->view("welcome_message.php");
+		}else{
+			header('Location: /nangua/login');
+		}
 	}
 	public function welcome_message(){
 		$this->load->helper('url');
