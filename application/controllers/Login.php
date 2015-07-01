@@ -34,12 +34,6 @@ class Login extends CI_Controller {
 			header('Location: /nangua/login');
 		}
 	}
-	public function welcome_message(){
-		$this->load->helper('url');
-		$data["username"] =  $this->input->post('username');
-		$data["password"] =  $this->input->post('password');
-		$this->load->view('welcome_message.php',$data);
-	}
 }
 
 /* End of file welcome.php */
