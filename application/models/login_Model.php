@@ -1,5 +1,5 @@
 <?php
-class Login_Model extends CI_Model {
+class login_Model extends CI_Model {
 
   public function __construct()
   {
@@ -9,8 +9,8 @@ class Login_Model extends CI_Model {
   if ($slug === FALSE)
   {
   	$username =  $this->input->post('username');
-	$password =  $this->input->post('password');
-    $query = $this->db->get_where('users', array('username' => $username));
+	  $password =  $this->input->post('password');
+    $query = $this->db->get_where('users', array('username' => $username,'password' => $password));
     $query = $query->row_array();
     if (!empty($query)) {
     	return true;

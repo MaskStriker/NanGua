@@ -13,7 +13,7 @@
 	<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<style>
 		#container{
-			width: 50%;
+			width: 500px;
 			margin: 0 auto;
 			margin-top: 10%;
 			border-radius: 4px;

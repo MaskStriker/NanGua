@@ -1,0 +1,12 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors zs ()
+ * @date    2015-07-30 10:28:30
+ * @version $Id$
+ */
+.wrap{
+	width: 1024px;
+	overflow: hidden;
+	margin: 0 auto;
+}

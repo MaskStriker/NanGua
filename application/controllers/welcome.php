@@ -1,31 +1,36 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class welcome extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -  
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in 
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
-	 */
-	public function index()
+	public function __construct()
 	{
-		$this->load->view('welcome_message');
+		parent::__construct();
+		$this->load->library("session");
 	}
-	public function login()
+	public function save(){
+		$content = $this->input->post('content');
+		if (!empty($content)) {
+			// echo $content;
+
+			$this->load->model("welcome_Model");
+			$result = $this->welcome_Model->save();
+			if ($result==true) {
+				// $userdata = array('username' => $username );
+				// $this->session->set_userdata($userdata);
+				echo "true";
+			}else{
+				echo "false";
+			}
+		}else{
+			echo "null";
+		}
+	}
+	public function success()
 	{
-		$this->load->view('login');
+		if ($this->session->userdata('username')) {
+			$this->load->view("success.php");
+		}else{
+			header('Location: /nangua/login');
+		}
 	}
 }
-
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
