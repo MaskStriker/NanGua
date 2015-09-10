@@ -14,8 +14,8 @@ class Login extends CI_Controller {
 	public function loginHandler(){
 		$username = $this->input->post('username');
 		if (!empty($username)) {
-			$this->load->model("login_Model");
-			$existedUser = $this->login_Model->checkUser();
+			$this->load->model("login_model");
+			$existedUser = $this->login_model->checkUser();
 			$data["existedUser"] = $existedUser;
 			if ($existedUser==true) {
 				$userdata = array('username' => $username );
