@@ -18,7 +18,7 @@ class Login extends CI_Controller {
 			$existedUser = $this->login_model->checkUser();
 			$data["existedUser"] = $existedUser;
 			if ($existedUser==true) {
-				$userdata = array('username' => $username );
+				$userdata = array('username' => $username);
 				$this->session->set_userdata($userdata);
 				echo "true";
 			}else{

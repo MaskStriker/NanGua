@@ -18,7 +18,7 @@ class login_model extends CI_Model {
     return FALSE;
   }
   
-  $query = $this->db->get_where('users', array('slug' => $slug));
+  //$query = $this->db->get_where('users', array('slug' => $slug));
   return $query->row_array();
 }
 }

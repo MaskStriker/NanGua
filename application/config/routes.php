@@ -38,9 +38,10 @@
 |
 */
 
-$route['default_controller'] = "welcome";
+$route['default_controller'] = "login";
 $route['404_override'] = '';
-
+$route['upload'] = 'UploadImg';
+$route['upload/create'] = 'UploadImg/create';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
