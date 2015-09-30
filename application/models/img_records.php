@@ -44,8 +44,9 @@ class img_records extends CI_Model {
         //返回上次insert的ID
         return $this->db->insert_id();
     }
-    public function delete()
+    public function delete($id)
     {
-        
+        $this->db->where('id', $id);
+        $this->db->delete('img_records');
     }
 }
