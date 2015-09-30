@@ -84,10 +84,38 @@ class UploadImg extends NG_Controller {
     }
     public function download()
     {
-    
+
     }
-    public function test()
-    {
-        echo "libing is here!";
+
+    public function deldir($dir) {
+  //先删除目录下的文件：
+  $dh=opendir($dir);
+  while ($file=readdir($dh)) {
+    if($file!="." && $file!="..") {
+      $fullpath=$dir."/".$file;
+      if(!is_dir($fullpath)) {
+          unlink($fullpath);
+      } else {
+          deldir($fullpath);
+      }
+    }
+  }
+ 
+  closedir($dh);
+  //删除当前文件夹：
+  if(rmdir($dir)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+    public function delete(){
+        echo "libing test delete here!";
+        $username = $this->session->userdata('username');
+        $id = $this->uri->segment(3);
+        $img_basepath = 'uploadimgs/'.$username.'/'.$id.'/';
+        $this->deldir($img_basepath);
+        $this->img_records->delete($id);
+        redirect("/UploadImg/index");
     }
 }

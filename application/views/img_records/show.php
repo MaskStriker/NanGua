@@ -18,7 +18,7 @@
 <?php 
 foreach($imgs as $x=>$x_value) {
     echo $x;
-    echo "<img src='http://nangua-makeup1122-2.c9.io/".$x_value."'></img>";
+    echo "<img src='http://".$_SERVER['SERVER_NAME']."/".$x_value."'></img>";
 }
 ?>
 <a href="/UploadImg/">back</a>
