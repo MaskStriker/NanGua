@@ -12,6 +12,7 @@ class UploadImg extends NG_Controller {
         $this->load->library("session");
         $this->load->helper('html');
         $this->load->library('image_lib');
+        $this->load->library('zip');
     }
     public function index()
     {
@@ -68,9 +69,17 @@ class UploadImg extends NG_Controller {
     }
     public function show()
     {
-        $username = $this->session->userdata('username');
-        $id = $this->uri->segment(3);
-        $img_basepath = 'uploadimgs/'.$username.'/'.$id.'/';
+        $data = array('imgs' => $this->getImgsInfo());
+        $this->load->view('img_records/show',$data);
+    }
+    public function download()
+    {
+        $imgPath = $this->getImgsPath();
+        $this->zip->read_dir($imgPath,FALSE);
+        $this->zip->download($this->getUserName().'_'.$this->uri->segment(3).'_zip');
+    }
+    private function getImgsInfo(){
+        $img_basepath = getImgsPath();
         $dir = dir($img_basepath);
         $files = array();
         while (($file = $dir->read()) !== false)
@@ -78,15 +87,17 @@ class UploadImg extends NG_Controller {
             if($file == '.' || $file =='..')continue;
             $files[$file] = $img_basepath.$file;
         }
-        $data = array('imgs' => $files);
         $dir->close();
-        $this->load->view('img_records/show',$data);
+        return $files;
     }
-    public function download()
-    {
-
+    private function getImgsPath(){
+        $username = $this->getUserName();
+        $id = $this->uri->segment(3);
+        return 'uploadimgs/'.$username.'/'.$id.'/';
     }
-
+    private function getUserName(){
+        return $this->session->userdata('username');
+    }
     public function deldir($dir) {
   //先删除目录下的文件：
   $dh=opendir($dir);

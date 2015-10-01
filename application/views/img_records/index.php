@@ -58,7 +58,7 @@
     <!--<td><?php echo $item['update_time']; ?></td>-->
     <td><a href= <?php echo site_url("/UploadImg/show/".$item['id']);?> >查看</a>   
         <a href= <?php echo site_url("/UploadImg/delete/".$item['id']);?> >删除</a>
-    <!--<a href="<?php echo site_url("/UploadImg/download/".$item['id']);?>">下载</a></td>-->
+        <a href="<?php echo site_url("/UploadImg/download/".$item['id']);?>">下载</a></td>
     </tr>
     <?php endforeach; ?>
 </table>
