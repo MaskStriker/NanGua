@@ -79,7 +79,7 @@ class UploadImg extends NG_Controller {
         $this->zip->download($this->getUserName().'_'.$this->uri->segment(3).'_zip');
     }
     private function getImgsInfo(){
-        $img_basepath = getImgsPath();
+        $img_basepath = $this->getImgsPath();
         $dir = dir($img_basepath);
         $files = array();
         while (($file = $dir->read()) !== false)
