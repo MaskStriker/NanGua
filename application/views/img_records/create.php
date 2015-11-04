@@ -23,7 +23,7 @@
 <div class="container" style="margin-top: 10px;border: 1px #ccc solid;border-radius: 4px;padding: 50px;">
 	<h2 style="margin-bottom: 30px;display:inline-block">请填入以下信息：</h2>
 	<a href="/UploadImg/" class="btn btn-warning" style="float:right">返回列表</a> 
-<?php echo validation_errors(); ?>
+<!--<?php echo validation_errors(); ?>-->
 
 <?php
     $attributes = array('class' => 'form-horizontal', 'id' => 'biteMe');
@@ -32,7 +32,7 @@
    <div class="form-group"> 
 		    <label for="text" class="col-lg-1">标题：</label>
 		    <div class="col-lg-3">
-		    	<input type="text" class="form-control" name="title">
+		    	<input type="text" class="form-control" name="title" value="<?php echo set_value('title'); ?>"><?php echo form_error('title'); ?>
 		    </div>
 	    </div>
 	    
@@ -81,11 +81,12 @@
 			</div>
 		    <label for="text" class="col-lg-1">楼层：</label>
 		    <div class="col-lg-1">
-		    	<input type="text" class="form-control" name="floor">
+		    	
+		    	<input type="text" class="form-control" name="floor" value="<?php echo set_value('floor'); ?>"><?php echo form_error('floor'); ?>
 		    </div>
 		    <label for="text" class="col-lg-1">总楼层：</label>
 		    <div class="col-lg-1">
-		    	<input type="text" class="form-control" name="total_floor">
+		    	<input type="text" class="form-control" name="total_floor" value="<?php echo set_value('total_floor'); ?>"><?php echo form_error('total_floor'); ?>
 		    </div>
 	    </div>
 	    <div class="form-group"> 
