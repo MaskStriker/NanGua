@@ -1,3 +1,3 @@
-RewriteEngine on  
-RewriteCond $1 !^(index\.php|static|images|js|css|robots\.txt) 
-RewriteRule ^(.*)$ /nangua/index.php/$1 [L]
+RewriteEngine on
+RewriteCond $1 !^(index\.php|static|uploadimgs|images|js|css|robots\.txt) 
+RewriteRule ^(.*)$ /index.php/$1 [L]

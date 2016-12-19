@@ -54,6 +54,7 @@
 		  <div class="form-group">
 		    <div class="col-sm-offset-2 col-sm-12">
 		      <button type="submit" id="submit" class="btn btn-default"><strong>登&nbsp&nbsp录</strong></button>
+		      <button id="register" class="btn btn-default"><strong>注&nbsp&nbsp册</strong></button>
 		    </div>
 		  </div>
 		</form>
@@ -75,7 +76,7 @@
 					if (result==="false") {
 						$("#errorTips").show();
 					}else if (result==="true") {
-						location.href = "login/success";
+						location.href = "upload";
 					};
 				}
 			})
